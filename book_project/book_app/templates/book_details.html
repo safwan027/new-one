@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="{{data.image.url}}" width="100px" height="100px">
+    <br>
+    Title:
+    {{data.title}}
+    <br>
+    Author:
+    {{data.author}}
+    <br>
+    Price:
+    {{data.price}}
+    <br>
+    Description:
+    {{data.description}}
+    <br>
+    category:
+    {{data.category}}
+    <br>
+    <hr>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="comment" placeholder="Comment here">
+        <button type="submit">Submit</button>
+    </form>
+    {% for c in comment_data %}
+    <br>
+    <h3>{{ c.fk_user.username }}</h3>
+    <p>{{ c.comment }}</p>
+    {% if c.fk_user == request.user %} 
+    <a href="{% url 'editcomment' id=c.id %}">Edit</a>
+    <a href="{% url 'deletecomment' id=c.id %}">Delete</a>
+    <br>
+    <br>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

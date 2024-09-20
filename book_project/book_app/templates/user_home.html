@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Book store</h3>
+    <a href="{% url 'logout' %}"><button>Logout</button></a>
+    <br>
+    <hr>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+    <input type="text" name="title1" placeholder="Search books"> 
+    <select name="type">
+        <option value="">Select</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Medical">Medical</option>
+        <option value="Science fiction">Science fiction</option>
+        <option value="PSC">PSC</option>
+        <option value="Politics">Politics</option>
+        <option value="Finance">Finance</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Other">Other</option>
+    </select>
+    <input type="submit" value="Search">
+    </form>
+    <br>
+    <br>
+    {% for i in data %}
+    <br>
+    {% if i.image %}
+    <img src="{{i.image.url}}" width="100px" height="100px">
+    {% else %}
+    nil
+    {% endif %} 
+    <br>
+    Title:
+    {{i.title}}
+    <br>
+    Author:
+    {{i.author}}
+    <br>
+    Price :
+    {{i.price}}
+    <br>
+    <a href="{% url 'bookdetails' id=i.id %}">Details</a>
+    <br>
+    <br>
+    {% endfor %}
+</body>
+</html>

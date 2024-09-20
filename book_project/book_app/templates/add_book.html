@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Upload books</h3>
+    <i>Let's together hear the brewing stories,<br>Do add a book here ,maybe that might help anyone.</i>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Book Name :</label>
+        <input type="text" name="title">
+        <br>
+        <label>Author :</label>
+        <input type="text" name="author">
+        <br>
+        <label>Descrption :</label>
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+        <br>
+        <label>Price :</label>
+        <input type="text" name="price">
+        <br>
+        <label>Book Cover :</label>
+        <br>
+        <input type="file" name="image">
+        <select name="type">
+            <option value="">Select</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Medical">Medical</option>
+            <option value="Science fiction">Science fiction</option>
+            <option value="PSC">PSC</option>
+            <option value="Politics">Politics</option>
+            <option value="Finance">Finance</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <button type="submit">Upload</button>
+
+    </form>
+</body>
+</html>

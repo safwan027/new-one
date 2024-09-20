@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Edit Page</h3>
+    <hr>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <br>
+        <label>Book Name :</label>
+        <input type="text" value="{{data.title}}" name="title">
+        <br>
+        <label>Author :</label>
+        <input type="text" value="{{data.author}}" name="author">
+        <br>
+        <label>Descrption :</label>
+        <textarea name="description" id="" cols="30" rows="10">{{data.description}}</textarea>
+        <br>
+        <label>Price :</label>
+        <input type="text" value="{{data.price}}" name="price">
+        <br>
+        <label>Book cover :</label>
+        <br>
+        <input type="file" name="image" value="{{data.image}}">
+        <select name="type">
+            <option value="">Select</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Medical">Medical</option>
+            <option value="Science fiction">Science fiction</option>
+            <option value="PSC">PSC</option>
+            <option value="Politics">Politics</option>
+            <option value="Finance">Finance</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Other">Other</option>
+        </select>
+        <br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

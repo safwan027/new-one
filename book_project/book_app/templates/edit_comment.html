@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <hr>
+    <h3>Edit Page</h3>
+    <hr>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <label>Comment:</label>
+        <br>
+        {% for i in data %}
+        <input type="text" name="comment" value="{{i.comment}}">
+        {% endfor %}
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
